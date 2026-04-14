@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varshitha Madasu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#07070a;--bg2:#0f0f14;--card:#13131a;--gold:#d4a853;--gold2:#f0c97a;--text:#edeae3;--muted:#7a7888;--border:rgba(212,168,83,0.15);--border2:rgba(212,168,83,0.3);}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--gold);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(7,7,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);font-style:italic;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;gap:0;}
+.tag{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--border2);padding:0.3rem 0.9rem;margin-bottom:1.5rem;}
+.tag-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.tag span{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.hello{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--muted);font-style:italic;margin-bottom:0.2rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1;margin-bottom:0.8rem;}
+h1 .first{font-weight:400;color:var(--text);display:block;}
+h1 .last{font-weight:700;color:var(--gold);display:block;}
+.role{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.bio{color:var(--muted);font-size:0.9rem;line-height:1.9;max-width:500px;margin-bottom:2rem;}
+
+/* PHOTO */
+.photo-area{margin-bottom:2rem;}
+.photo-wrap{position:relative;width:200px;height:240px;margin:0 auto;}
+.photo-deco{position:absolute;top:-10px;right:-10px;width:100%;height:100%;border:1px solid var(--border2);}
+.photo-box{position:relative;z-index:1;width:100%;height:100%;background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;}
+.photo-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+.photo-icon{font-size:3rem;opacity:0.1;}
+.photo-hint{font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
+.upload-btn{padding:0.45rem 1rem;background:var(--gold);border:none;color:#07070a;font-family:'Outfit',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-weight:500;}
+
+/* SOCIALS */
+.socials{display:flex;gap:0.6rem;justify-content:center;}
+.social-btn{width:34px;height:34px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.75rem;transition:all 0.3s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+/* SECTIONS */
+.section{padding:5rem 4rem;}
+.section-alt{background:var(--bg2);}
+.sec-label{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.6rem;}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--gold);}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:2rem;line-height:1.15;}
+h2 em{font-style:italic;color:var(--gold);}
+.edit-btn{padding:0.5rem 1.1rem;background:transparent;border:1px solid var(--border);color:var(--gold);font-family:'Outfit',sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;margin-top:1.2rem;display:inline-block;}
+.edit-btn:hover{background:rgba(212,168,83,0.08);}
+
+/* ABOUT */
+.about-text p{color:var(--muted);font-size:0.9rem;line-height:1.95;margin-bottom:0.9rem;max-width:700px;}
+
+/* SKILLS */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1.2rem;}
+.skill{padding:0.45rem 1rem;background:var(--card);border:1px solid var(--border);font-size:0.78rem;color:var(--text);transition:all 0.3s;cursor:default;position:relative;}
+.skill:hover{border-color:var(--gold);color:var(--gold);}
+.skill .x{position:absolute;top:-5px;right:-5px;width:13px;height:13px;background:#c4727a;border-radius:50%;font-size:0.48rem;display:none;align-items:center;justify-content:center;cursor:pointer;color:#fff;border:none;}
+.skill:hover .x{display:flex;}
+.add-skill-row{display:flex;gap:0.6rem;margin-top:0.4rem;}
+.skill-input{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:0.8rem;padding:0.55rem 0.85rem;outline:none;flex:1;max-width:200px;transition:border-color 0.3s;}
+.skill-input:focus{border-color:var(--gold);}
+.skill-input::placeholder{color:var(--muted);}
+.add-btn{padding:0.55rem 1rem;background:var(--gold);color:#07070a;border:none;font-family:'Outfit',sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-weight:500;}
+
+/* PROJECTS */
+.proj-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.proj-card{background:var(--card);overflow:hidden;transition:all 0.3s;}
+.proj-card:hover{background:var(--bg2);transform:translateY(-4px);z-index:2;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.proj-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:var(--bg2);}
+.proj-body{padding:1.3rem;}
+.proj-cat{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.5rem;}
+.proj-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.4rem;}
+.proj-desc{font-size:0.78rem;color:var(--muted);line-height:1.75;margin-bottom:0.9rem;}
+.proj-foot{display:flex;justify-content:space-between;align-items:center;}
+.proj-link{font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;}
+.proj-rm{font-size:0.58rem;color:var(--muted);background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:color 0.3s;}
+.proj-rm:hover{color:#c4727a;}
+.proj-add{background:var(--card);border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;cursor:pointer;color:var(--muted);gap:0.6rem;transition:all 0.3s;}
+.proj-add:hover{color:var(--gold);background:var(--bg2);}
+.proj-add-icon{font-size:2rem;transition:transform 0.3s;}
+.proj-add:hover .proj-add-icon{transform:rotate(90deg);}
+.proj-add-lbl{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:1.5rem;padding-bottom:1.8rem;}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold);text-align:right;padding-top:0.2rem;}
+.tl-right{border-left:1px solid var(--border);padding-left:1.5rem;position:relative;}
+.tl-right::before{content:'';position:absolute;left:-4px;top:5px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.tl-card{background:var(--card);border:1px solid var(--border);padding:1.1rem;transition:all 0.3s;}
+.tl-card:hover{border-color:var(--border2);transform:translateX(4px);}
+.tl-role{font-size:0.9rem;font-weight:500;margin-bottom:0.2rem;}
+.tl-org{font-size:0.68rem;color:var(--gold);margin-bottom:0.5rem;}
+.tl-desc{font-size:0.78rem;color:var(--muted);line-height:1.75;}
+.tl-rm{font-size:0.56rem;color:var(--muted);background:none;border:none;cursor:pointer;margin-top:0.5rem;font-family:'Outfit',sans-serif;display:block;transition:color 0.3s;}
+.tl-rm:hover{color:#c4727a;}
+.tl-add-btn{padding:0.6rem 1.4rem;background:transparent;border:1px solid var(--border);color:var(--gold);font-family:'Outfit',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;transition:all 0.3s;}
+.tl-add-btn:hover{background:rgba(212,168,83,0.08);}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-desc{color:var(--muted);font-size:0.88rem;line-height:1.9;margin-bottom:1.5rem;}
+.contact-links{display:flex;flex-direction:column;gap:0.6rem;}
+.contact-link{display:flex;align-items:center;gap:0.8rem;padding:0.85rem 1rem;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--text);transition:all 0.3s;}
+.contact-link:hover{border-color:var(--gold);transform:translateX(4px);}
+.contact-icon{width:30px;height:30px;background:rgba(212,168,83,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;}
+.contact-lbl{font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.1rem;}
+.contact-val{font-size:0.82rem;}
+.update-btn{margin-top:0.7rem;padding:0.45rem 1rem;background:transparent;border:1px dashed var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;transition:all 0.3s;}
+.update-btn:hover{border-color:var(--gold);color:var(--gold);}
+.form{display:flex;flex-direction:column;gap:0.7rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+.form-group{display:flex;flex-direction:column;gap:0.3rem;}
+.form-label{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+.form-input,.form-textarea{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:0.82rem;padding:0.7rem 0.85rem;outline:none;transition:border-color 0.3s;resize:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted);}
+.form-textarea{min-height:110px;}
+.form-submit{padding:0.8rem 2rem;background:var(--gold);color:#07070a;border:none;font-family:'Outfit',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:background 0.3s;align-self:flex-start;}
+.form-submit:hover{background:var(--gold2);}
+.form-success{padding:0.7rem;background:rgba(212,168,83,0.08);border:1px solid var(--border);color:var(--gold);font-size:0.75rem;text-align:center;display:none;}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);font-style:italic;}
+.footer-copy{font-size:0.68rem;color:var(--muted);}
+.back-top{font-size:0.62rem;color:var(--muted);background:none;border:none;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:color 0.3s;}
+.back-top:hover{color:var(--gold);}
+
+/* MODALS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.overlay.show{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border);padding:2rem;width:90%;max-width:480px;position:relative;max-height:85vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem;}
+.modal-fields{display:flex;flex-direction:column;gap:0.7rem;}
+.modal-field{display:flex;flex-direction:column;gap:0.28rem;}
+.modal-label{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+.modal-input,.modal-textarea{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:0.82rem;padding:0.65rem 0.85rem;outline:none;transition:border-color 0.3s;resize:none;}
+.modal-input:focus,.modal-textarea:focus{border-color:var(--gold);}
+.modal-input::placeholder,.modal-textarea::placeholder{color:var(--muted);}
+.modal-textarea{min-height:75px;}
+.modal-save{padding:0.75rem 1.8rem;background:var(--gold);color:#07070a;border:none;font-family:'Outfit',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-weight:500;margin-top:0.4rem;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  .section{padding:3.5rem 1.5rem;}
+  .proj-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .tl-item{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:0.8rem;text-align:center;padding:1.2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Varshitha Madasu</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="tag"><div class="tag-dot"></div><span>Open to Opportunities</span></div>
+  <div class="hello">Hello, I'm</div>
+  <h1><span class="first">Varshitha</span><span class="last">Madasu</span></h1>
+  <div class="role">Dashboard Designer & Data Analyst</div>
+  <p class="bio">A passionate and dedicated professional with a strong foundation in technology, data analysis, and creative problem solving. I build dashboards and digital experiences that make a real impact.</p>
+
+  <!-- PHOTO -->
+  <div class="photo-area">
+    <div class="photo-wrap">
+      <div class="photo-deco"></div>
+      <div class="photo-box" id="photoBox">
+        <img id="profileImg" src="" alt="Varshitha Madasu">
+        <div class="photo-icon">👤</div>
+        <div class="photo-hint">Your Photo Here</div>
+        <button class="upload-btn" onclick="document.getElementById('photoFile').click()">Upload Photo</button>
+        <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="uploadPhoto(event)">
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a class="social-btn" id="sEmail" href="#" title="Email">✉</a>
+    <a class="social-btn" id="sLi" href="#" target="_blank" title="LinkedIn">in</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section section-alt" id="about">
+  <div class="sec-label">About Me</div>
+  <h2>Who I Am & <em>What I Do</em></h2>
+  <div class="about-text">
+    <p id="ab1">I am Varshitha Madasu — a passionate professional with a strong academic background in technology and computer science. I have built a solid foundation through rigorous studies and hands-on project work.</p>
+    <p id="ab2">I specialise in creating data dashboards, analytical reports, and web-based projects. Every project is approached with dedication, attention to detail, and a commitment to delivering meaningful results.</p>
+    <p id="ab3">I am constantly learning and growing — always exploring new tools and ideas to evolve my craft and create work that truly makes an impact.</p>
+  </div>
+  <button class="edit-btn" onclick="openAboutModal()">✏ Edit About</button>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="sec-label">Skills</div>
+  <h2>What I <em>Work With</em></h2>
+  <div class="skills-wrap" id="skillsWrap"></div>
+  <div class="add-skill-row">
+    <input class="skill-input" id="skillInput" placeholder="Add a skill..." onkeydown="if(event.key==='Enter')addSkill()">
+    <button class="add-btn" onclick="addSkill()">+ Add</button>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section section-alt" id="projects">
+  <div class="proj-header">
+    <div>
+      <div class="sec-label">My Work</div>
+      <h2 style="margin-bottom:0">Projects & <em>Dashboards</em></h2>
+    </div>
+    <button class="edit-btn" onclick="openModal('projModal')">+ Add Project</button>
+  </div>
+  <div class="proj-grid" id="projGrid"></div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="sec-label">Journey</div>
+  <h2>Education & <em>Experience</em></h2>
+  <div class="tl" id="tlEl"></div>
+  <button class="tl-add-btn" onclick="openModal('tlModal')">+ Add Entry</button>
+</div>
+
+<!-- CONTACT -->
+<div class="section section-alt" id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="sec-label">Contact</div>
+      <h2>Let's <em>Connect</em></h2>
+      <p class="contact-desc">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a class="contact-link" id="emailLink" href="#">
+          <div class="contact-icon">✉</div>
+          <div><div class="contact-lbl">Email</div><div class="contact-val" id="emailVal">varshitha@email.com</div></div>
+        </a>
+        <a class="contact-link" id="liLink" href="#" target="_blank">
+          <div class="contact-icon">💼</div>
+          <div><div class="contact-lbl">LinkedIn</div><div class="contact-val" id="liVal">linkedin.com/in/varshitha-madasu</div></div>
+        </a>
+      </div>
+      <button class="update-btn" onclick="openModal('contactModal')">✏ Update Contact Details</button>
+    </div>
+    <form class="form" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Name</label><input class="form-input" placeholder="Your name" required></div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="Your email" required></div>
+      </div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..." required></textarea></div>
+      <button type="submit" class="form-submit">Send Message →</button>
+      <div class="form-success" id="formSuccess">✓ Sent! I'll get back to you soon.</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Varshitha Madasu</div>
+  <div class="footer-copy">© 2025 Varshitha Madasu</div>
+  <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</footer>
+
+<!-- MODALS -->
+<div class="overlay" id="aboutModal"><div class="modal"><button class="modal-close" onclick="closeModal('aboutModal')">✕</button><div class="modal-title">Edit About</div><div class="modal-fields"><div class="modal-field"><label class="modal-label">Paragraph 1</label><textarea class="modal-textarea" id="mAb1"></textarea></div><div class="modal-field"><label class="modal-label">Paragraph 2</label><textarea class="modal-textarea" id="mAb2"></textarea></div><div class="modal-field"><label class="modal-label">Paragraph 3</label><textarea class="modal-textarea" id="mAb3"></textarea></div><button class="modal-save" onclick="saveAbout()">Save</button></div></div></div>
+
+<div class="overlay" id="projModal"><div class="modal"><button class="modal-close" onclick="closeModal('projModal')">✕</button><div class="modal-title">Add Project</div><div class="modal-fields"><div class="modal-field"><label class="modal-label">Title *</label><input class="modal-input" id="pT" placeholder="My Dashboard"></div><div class="modal-field"><label class="modal-label">Category</label><input class="modal-input" id="pC" placeholder="Dashboard, Web App..."></div><div class="modal-field"><label class="modal-label">Description</label><textarea class="modal-textarea" id="pD" placeholder="What does this project do?"></textarea></div><div class="modal-field"><label class="modal-label">Emoji</label><input class="modal-input" id="pE" placeholder="📊" maxlength="2"></div><div class="modal-field"><label class="modal-label">Link (optional)</label><input class="modal-input" id="pL" placeholder="https://..."></div><button class="modal-save" onclick="addProject()">Add Project</button></div></div></div>
+
+<div class="overlay" id="tlModal"><div class="modal"><button class="modal-close" onclick="closeModal('tlModal')">✕</button><div class="modal-title">Add Entry</div><div class="modal-fields"><div class="modal-field"><label class="modal-label">Year</label><input class="modal-input" id="tY" placeholder="2021 – 2025"></div><div class="modal-field"><label class="modal-label">Title *</label><input class="modal-input" id="tT" placeholder="B.Tech Computer Science"></div><div class="modal-field"><label class="modal-label">Organisation</label><input class="modal-input" id="tO" placeholder="XYZ University"></div><div class="modal-field"><label class="modal-label">Description</label><textarea class="modal-textarea" id="tD"></textarea></div><button class="modal-save" onclick="addTimeline()">Add Entry</button></div></div></div>
+
+<div class="overlay" id="contactModal"><div class="modal"><button class="modal-close" onclick="closeModal('contactModal')">✕</button><div class="modal-title">Update Contact</div><div class="modal-fields"><div class="modal-field"><label class="modal-label">Email</label><input type="email" class="modal-input" id="mEmail" placeholder="your@email.com"></div><div class="modal-field"><label class="modal-label">LinkedIn URL</label><input class="modal-input" id="mLi" placeholder="https://linkedin.com/in/..."></div><button class="modal-save" onclick="saveContact()">Save</button></div></div></div>
+
+<script>
+// PHOTO
+function uploadPhoto(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=document.getElementById('profileImg');img.src=ev.target.result;img.style.display='block';document.querySelector('.photo-icon').style.display='none';document.querySelector('.photo-hint').style.display='none';document.querySelector('.upload-btn').style.display='none';};r.readAsDataURL(f);}
+
+// SKILLS
+let skills=['Dashboard Design','Data Analysis','HTML & CSS','JavaScript','Excel / Sheets','Power BI','Python','SQL','PowerPoint','Figma','Problem Solving','Team Work'];
+function renderSkills(){document.getElementById('skillsWrap').innerHTML=skills.map((s,i)=>`<div class="skill">${s}<button class="x" onclick="removeSkill(${i})">✕</button></div>`).join('');}
+function addSkill(){const v=document.getElementById('skillInput').value.trim();if(v){skills.push(v);renderSkills();document.getElementById('skillInput').value='';}}
+function removeSkill(i){skills.splice(i,1);renderSkills();}
+renderSkills();
+
+// PROJECTS
+let projects=[
+  {t:'Sales Analytics Dashboard',c:'Dashboard',d:'Interactive dashboard with KPIs, charts and filters to track business performance.',e:'📊',l:''},
+  {t:'Portfolio Website',c:'Web Project',d:'Fully responsive one-page portfolio to professionally showcase projects and skills.',e:'🌐',l:''},
+  {t:'Data Analysis Report',c:'Analytics',d:'Detailed analysis exploring trends and insights from a real-world dataset.',e:'📈',l:''}
+];
+function renderProjects(){document.getElementById('projGrid').innerHTML=projects.map((p,i)=>`<div class="proj-card"><div class="proj-thumb">${p.e||'🚀'}</div><div class="proj-body"><span class="proj-cat">${p.c}</span><div class="proj-title">${p.t}</div><div class="proj-desc">${p.d}</div><div class="proj-foot">${p.l?`<a href="${p.l}" class="proj-link" target="_blank">View →</a>`:'<span></span>'}<button class="proj-rm" onclick="removeProject(${i})">✕ Remove</button></div></div></div>`).join('')+`<button class="proj-add" onclick="openModal('projModal')"><span class="proj-add-icon">+</span><span class="proj-add-lbl">Add Project</span></button>`;}
+function addProject(){const t=document.getElementById('pT').value.trim();if(!t)return;projects.unshift({t,c:document.getElementById('pC').value.trim()||'Project',d:document.getElementById('pD').value.trim(),e:document.getElementById('pE').value.trim()||'🚀',l:document.getElementById('pL').value.trim()});['pT','pC','pD','pE','pL'].forEach(id=>document.getElementById(id).value='');closeModal('projModal');renderProjects();}
+function removeProject(i){if(confirm('Remove?')){projects.splice(i,1);renderProjects();}}
+renderProjects();
+
+// TIMELINE
+let timeline=[
+  {y:'2020 – 2024',t:'B.Tech — Computer Science',o:'Your University, Hyderabad',d:'Degree with focus on data structures, web development and database management.'},
+  {y:'2024',t:'Dashboard Developer',o:'Personal Projects',d:'Built multiple interactive dashboards and data visualisation projects.'}
+];
+function renderTimeline(){document.getElementById('tlEl').innerHTML=timeline.map((t,i)=>`<div class="tl-item"><div class="tl-year">${t.y}</div><div class="tl-right"><div class="tl-card"><div class="tl-role">${t.t}</div><div class="tl-org">${t.o}</div><div class="tl-desc">${t.d}</div><button class="tl-rm" onclick="removeTimeline(${i})">✕ Remove</button></div></div></div>`).join('');}
+function addTimeline(){const t=document.getElementById('tT').value.trim();if(!t)return;timeline.unshift({y:document.getElementById('tY').value.trim()||'2024',t,o:document.getElementById('tO').value.trim(),d:document.getElementById('tD').value.trim()});['tY','tT','tO','tD'].forEach(id=>document.getElementById(id).value='');closeModal('tlModal');renderTimeline();}
+function removeTimeline(i){if(confirm('Remove?')){timeline.splice(i,1);renderTimeline();}}
+renderTimeline();
+
+// ABOUT
+function openAboutModal(){document.getElementById('mAb1').value=document.getElementById('ab1').textContent;document.getElementById('mAb2').value=document.getElementById('ab2').textContent;document.getElementById('mAb3').value=document.getElementById('ab3').textContent;openModal('aboutModal');}
+function saveAbout(){['ab1','ab2','ab3'].forEach((id,i)=>{const v=document.getElementById('mAb'+(i+1)).value.trim();if(v)document.getElementById(id).textContent=v;});closeModal('aboutModal');}
+
+// CONTACT
+function saveContact(){const e=document.getElementById('mEmail').value.trim(),l=document.getElementById('mLi').value.trim();if(e){document.getElementById('emailVal').textContent=e;document.getElementById('emailLink').href='mailto:'+e;document.getElementById('sEmail').href='mailto:'+e;}if(l){document.getElementById('liVal').textContent=l;document.getElementById('liLink').href=l;document.getElementById('sLi').href=l;}closeModal('contactModal');}
+
+// FORM
+function submitForm(e){e.preventDefault();const b=e.target.querySelector('.form-submit');b.textContent='Sending...';setTimeout(()=>{b.textContent='Send Message →';document.getElementById('formSuccess').style.display='block';e.target.reset();setTimeout(()=>document.getElementById('formSuccess').style.display='none',4000);},1200);}
+
+// MODALS
+function openModal(id){document.getElementById(id).classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
+</script>
+</body>
+</html>
